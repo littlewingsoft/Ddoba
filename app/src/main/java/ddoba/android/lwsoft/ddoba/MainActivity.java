@@ -10,8 +10,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import android.app.ActionBar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -33,8 +35,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         private Context context;
 
-        HashMap<Integer,String> mTabName=new HashMap<Integer,String>();
-        HashMap<Integer,Fragment > mFragList= new HashMap<Integer,Fragment>();
+        HashMap<Integer,String> mTabName=new HashMap<>();
+        HashMap<Integer,Fragment > mFragList= new HashMap<>();
 
         public void addFragment( Context context, int index, String title ){
 
@@ -183,12 +185,22 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         settingAD();
     }
 
+    //TODO 여기서 ad 없어지는거 처리 해야됨.
     void settingAD(){
-
+        Log.i("tag_", "settingAD");
         // adView를 만듭니다.
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);    }
+        mAdView.loadAd(adRequest);
+        mAdView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //v.setVisibility(View.GONE);
+                Log.i("tag_", "click on settingAD ");
+
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
