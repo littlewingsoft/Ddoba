@@ -230,6 +230,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     protected  void onDestroy(){
         mAdView.destroy();
         super.onDestroy();
+        this is tedst
     }
     @Override
     protected void onStop() {
