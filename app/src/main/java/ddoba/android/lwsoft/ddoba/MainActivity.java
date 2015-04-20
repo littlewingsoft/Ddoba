@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -155,8 +156,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         final ActionBar  actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setDisplayShowTitleEnabled(false);
-        actionBar.setDisplayShowHomeEnabled(false
-        );
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(true);
+        //actionBar.hide();
+
         mViewPager = (ViewPager)findViewById(R.id.pager);
         mPagerAdapter = new SamplePagerAdapter(getSupportFragmentManager(),this );
         mViewPager.setAdapter( mPagerAdapter );
